@@ -1,0 +1,185 @@
+{% extends 'solicitudes/base.html' %}
+
+{% block title %}Solicitud Enviada{% endblock %}
+
+{% block header %}¡Solicitud Enviada!{% endblock %}
+{% block subtitle %}Su solicitud ha sido registrada exitosamente{% endblock %}
+
+{% block extra_css %}
+<style>
+    .success-container {
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .success-icon {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 30px;
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+        animation: scaleIn 0.5s ease-out;
+        box-shadow: 0 10px 30px rgba(17, 153, 142, 0.3);
+    }
+
+    @keyframes scaleIn {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .success-message {
+        margin-bottom: 30px;
+    }
+
+    .success-message h2 {
+        color: #2d3748;
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+
+    .success-message p {
+        color: #4a5568;
+        font-size: 1.1em;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    .info-box {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        padding: 25px;
+        border-radius: 15px;
+        margin: 30px 0;
+        border-left: 5px solid #667eea;
+    }
+
+    .info-box h3 {
+        color: #2d3748;
+        margin-bottom: 15px;
+        font-size: 1.3em;
+    }
+
+    .info-box ul {
+        list-style: none;
+        text-align: left;
+    }
+
+    .info-box li {
+        color: #4a5568;
+        padding: 8px 0;
+        padding-left: 30px;
+        position: relative;
+    }
+
+    .info-box li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #38ef7d;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    .btn-container {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 14px 30px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-size: 0.95em;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-secondary {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(245, 87, 108, 0.4);
+    }
+
+    .reference-number {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 20px 0;
+        border: 2px dashed #667eea;
+    }
+
+    .reference-number strong {
+        color: #667eea;
+        font-size: 1.2em;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="success-container">
+    <div class="success-icon">
+        ✅
+    </div>
+    
+    <div class="success-message">
+        <h2>¡Solicitud Registrada Exitosamente!</h2>
+        <p>Su solicitud ha sido recibida y será procesada a la brevedad posible.</p>
+        <p>Recibirá una notificación por correo electrónico con los detalles.</p>
+    </div>
+
+    <div class="reference-number">
+        <strong>📌 Número de Referencia:</strong> SOL-{{ "now"|date:"YmdHis" }}
+    </div>
+
+    <div class="info-box">
+        <h3>📋 Próximos Pasos</h3>
+        <ul>
+            <li>Recibirá un correo de confirmación en las próximas 24 horas</li>
+            <li>El tiempo de respuesta estimado es de 3 a 5 días hábiles</li>
+            <li>Puede consultar el estado de su solicitud en cualquier momento</li>
+            <li>Si tiene dudas, puede contactarnos a través de nuestros canales oficiales</li>
+        </ul>
+    </div>
+
+    <div class="btn-container">
+        <a href="{% url 'crear_solicitud' %}" class="btn btn-primary">
+            📝 Nueva Solicitud
+        </a>
+        <a href="/" class="btn btn-secondary">
+            🏠 Ir al Inicio
+        </a>
+    </div>
+</div>
+{% endblock %}
